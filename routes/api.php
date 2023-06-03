@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PassportAuthController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +19,10 @@ use App\Http\Controllers\PassportAuthController;
 //     return $request->user();
 // });
 
- 
-Route::post('register', [PassportAuthController::class, 'register']);
-Route::post('login', [PassportAuthController::class, 'login']);
-  
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
 Route::middleware('auth:api')->group(function () {
-    Route::get('get-user', [PassportAuthController::class, 'userInfo']);
+    Route::get('user-list', [AuthController::class, 'userInfo']);
 });
