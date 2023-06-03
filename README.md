@@ -13,4 +13,9 @@
 ## Run php artisan key:generate
 ## Run php artisan migrate
 ## Run php artisan serve
+
+## registration
+![CHEESE!](register.JPG)
+## login
+![CHEESE!](login.JPG)
  
