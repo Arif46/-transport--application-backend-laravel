@@ -11,7 +11,7 @@ class TransportValidations
     public static function validate($request, $id = 0)
     {
         $validator = Validator::make($request->all(), [
-            'transport_type' => 'required',
+            'transport_type' => 'required|unique:transports,transport_type,'.$id,
             'distance' => 'required',
             'price' => 'required',
        ]);

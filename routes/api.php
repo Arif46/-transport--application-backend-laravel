@@ -34,10 +34,10 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/oauth/token/refresh', [AuthorizedAccessTokenController::class, 'refresh']);
     Route::post('/oauth/token/revoke', [AuthorizedAccessTokenController::class, 'revoke']);
     // Transport routes ...
-    Route::get('/transports', [TransportController::class, 'index']);
-    Route::post('/transports', [TransportController::class, 'store']);
-    Route::get('/transports/{id}', [TransportController::class, 'show']);
-    Route::put('/transports/{id}', [TransportController::class, 'update']);
-    Route::delete('/transports/{id}', [TransportController::class, 'destroy']);
+    Route::post('/store', [TransportController::class, 'store']);
+    Route::get('/list', [TransportController::class, 'index']);
+    Route::get('/show/{id}', [TransportController::class, 'show']);
+    Route::put('/update/{id}', [TransportController::class, 'update']);
+    Route::delete('/delete/{id}', [TransportController::class, 'destroy']);
     Route::post('/transports/calculate-price', [TransportController::class, 'calculatePrice']);
 });
