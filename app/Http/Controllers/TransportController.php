@@ -158,10 +158,14 @@ class TransportController extends Controller
         // Hard code the cost based on transport type and distance
         if ($transportType === 'road') {
             return $distance * 0.1;
-        } elseif ($transportType === 'sea') {
+        } else if ($transportType === 'sea') {
             return $distance * 0.2;
-        } elseif ($transportType === 'air') {
-            return $distance * 0.3;
+        } else if ($transportType === 'boat') {
+            return $distance * 0.4;
+        } else if ($transportType === 'ship') {
+            return $distance * 0.5;
+        } else if ($transportType === 'speed') {
+            return $distance * 0.6;
         }
         return 0;
     }
