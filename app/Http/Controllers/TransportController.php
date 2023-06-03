@@ -65,7 +65,7 @@ class TransportController extends Controller
         $transport = Transport::find($id);
 
         if (!$transport) {
-            return response()->jso([
+            return response()->json([
                 'success' => false,
                 'message' => 'Data not found.'
             ]);
@@ -120,10 +120,22 @@ class TransportController extends Controller
      */
     public function destroy($id)
     {
-        $transport = Transport::find($id);
+    $transport = Transport::find($id);
+
+        if (!$transport) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data not found.'
+            ]);
+        }
+
         $transport->delete();
 
-        return response()->json(null, 204);
+        return response()->json([
+            'success' => true,
+            'message' => 'Data deleted successfully'
+        ]);
+
     }
 
     /**
