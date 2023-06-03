@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Validations\Registration\RegistrationValidations;
 use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
@@ -13,11 +14,11 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|min:4',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-        ]);
+        $validationResult = RegistrationValidations::validate($request);
+
+        if (!$validationResult['success']) {
+            return response($validationResult);
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -69,6 +70,7 @@ class AuthController extends Controller
     {
 
         $users = DB::table('users')->get();
+
         return response()->json([
             'sucess' => true,
             'message' => 'Fetch All User List',
